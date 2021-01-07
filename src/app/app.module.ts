@@ -6,11 +6,12 @@ import { AppComponent } from './app.component';
 import { BookListComponent } from './book-list/book-list.component';
 
 import {BookListService} from './shared/service/book-list.service';
-
+import { BookItemComponent } from './book-list/book-item/book-item.component';
 @NgModule({
   declarations: [
     AppComponent,
-    BookListComponent
+    BookListComponent,
+    BookItemComponent
   ],
   imports: [
     BrowserModule, HttpClientModule

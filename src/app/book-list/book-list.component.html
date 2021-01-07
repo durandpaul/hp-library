@@ -1,11 +1,12 @@
 <div class="row">
     <!-- Add Research bar -->
+    <p>SEARCH BAR</p>
 </div>
 <div class="row">
-    <div class="col-xs-12">
-        <!-- Add book component -->
-        <ul *ngFor="let book of theBookList">
-            <li>{{book.title}} / {{book.price}}</li>
-        </ul>
+    <div class="col-md-12">
+        <app-book-item 
+            *ngFor="let bookEl of theBookList" 
+            [book]="bookEl">
+        </app-book-item>
     </div>
 </div>
