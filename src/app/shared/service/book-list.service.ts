@@ -23,4 +23,8 @@ export class BookListService {
     return this.http.get(`${this.apiUrl}`, this.httpOptions);
   }
 
+  getBook(id: string) {
+    return this.http.get(`${this.apiUrl}/${id}`, this.httpOptions);
+  }
 }
+

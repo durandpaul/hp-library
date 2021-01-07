@@ -11,15 +11,15 @@ import {BookListService} from '../shared/service/book-list.service';
 export class BookListComponent implements OnInit {
   theBookList: object;
 
-  constructor(private booklist: BookListService) { }
+  constructor(private bookService: BookListService) { }
 
   ngOnInit() {
     this.getAllBook();
   }
 
   getAllBook() {
-    this.booklist.getBookList().subscribe((data) => {
-      this.theBookList = data;
+    this.bookService.getBookList().subscribe((booklist) => {
+      this.theBookList = booklist;
     });
   }
 }
