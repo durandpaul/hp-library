@@ -11,11 +11,14 @@ import {BookListService} from './shared/service/book-list.service';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { NavBarComponent } from './header/nav-bar/nav-bar.component';
+import { BookDetailComponent } from './book-list/book-detail/book-detail.component';
+import { StoreModule } from '@ngrx/store';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'booklist', component: BookListComponent},
+  {path: 'book/:id', component: BookDetailComponent},
   // {path: 'mybasket', component: basketComponent},
 ];
 
@@ -26,10 +29,11 @@ const routes: Routes = [
     BookItemComponent,
     HomeComponent,
     HeaderComponent,
-    NavBarComponent
+    NavBarComponent,
+    BookDetailComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule, RouterModule.forRoot(routes)
+    BrowserModule, HttpClientModule, RouterModule.forRoot(routes), StoreModule.forRoot({}, {})
   ],
   providers: [BookListService],
   bootstrap: [AppComponent]
