@@ -5,8 +5,9 @@
 <div class="row">
     <div class="list-group book">
         <app-book-item 
-            *ngFor="let bookEl of theBookList" 
+            *ngFor="let bookEl of books.books" 
             [book]="bookEl">
         </app-book-item>
     </div>
 </div>
+
