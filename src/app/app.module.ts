@@ -13,6 +13,9 @@ import { HeaderComponent } from './header/header.component';
 import { NavBarComponent } from './header/nav-bar/nav-bar.component';
 import { BookDetailComponent } from './book-list/book-detail/book-detail.component';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { BookEffects } from './shared/store/books.effects';
+import { BookReducer } from './shared/store/books.reducer';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -33,7 +36,11 @@ const routes: Routes = [
     BookDetailComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule, RouterModule.forRoot(routes), StoreModule.forRoot({}, {})
+    BrowserModule,
+    HttpClientModule,
+    RouterModule.forRoot(routes),
+    StoreModule.forRoot({books: BookReducer}),
+    EffectsModule.forRoot([BookEffects])
   ],
   providers: [BookListService],
   bootstrap: [AppComponent]
