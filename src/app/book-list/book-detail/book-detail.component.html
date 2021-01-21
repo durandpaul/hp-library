@@ -1,1 +1,24 @@
-<p> {{id}} </p>
+<div class="row">
+        <div class="col-10">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title"> {{ selectedBook.title }} / {{ selectedBook.price }} € </h5>
+                </div>
+                <div class="card-body">
+                    <img [src]="selectedBook.cover" [alt]="selectedBook.title" class="img-responsive">
+                </div>
+                <div class="card-footer">
+                    <p class="card-text"> Synopsis: </p>
+                    <p class="card-text"> {{ selectedBook.synopsis }}  </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="row">
+                <p>Panier</p>
+            </div>
+            <div class="row">
+                <p>Promotion</p>
+            </div>
+        </div>
+</div>
