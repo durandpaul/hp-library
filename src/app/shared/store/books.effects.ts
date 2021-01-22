@@ -18,7 +18,6 @@ export class BookEffects {
         }),
         catchError(() => EMPTY)
     );
-
     constructor(
         private actions$: Actions,
         private bookListService: BookListService) {}
