@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 import { AppComponent } from './app.component';
 import { BookListComponent } from './book-list/book-list.component';
@@ -16,6 +18,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { BookEffects } from './shared/store/books.effects';
 import { BookReducer } from './shared/store/books.reducer';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -33,11 +36,13 @@ const routes: Routes = [
     HomeComponent,
     HeaderComponent,
     NavBarComponent,
-    BookDetailComponent
+    BookDetailComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes),
     StoreModule.forRoot({books: BookReducer}),
     EffectsModule.forRoot([BookEffects])
