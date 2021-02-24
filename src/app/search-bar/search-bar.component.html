@@ -1,0 +1,39 @@
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+          <div class="mb-2 row">
+            <input id="title" class="form-control me-2" 
+              type="search" 
+              placeholder="Search a book" 
+              aria-label="Search"
+              formControlName="title">
+          </div>
+          <div class="mb-1" *ngIf="title?.dirty || title?.touched" >
+              <div *ngIf="title.errors?.minlength"> 
+                4 characters requires at least.
+              </div>
+              <div *ngIf="title.errors?.pattern"> 
+                No numbers are valid 
+              </div>              
+          </div>
+        <div class="mb-3 row">
+          <input id="price" class="form-control me-2"
+            type="search" 
+            placeholder="Search books by price" 
+            aria-label="Search"
+            formControlName="price">          
+        </div> 
+        <div class="mb-1" *ngIf="price?.dirty || price?.touched" >
+          <div *ngIf="price.errors?.minlength"> 
+            2 characters requires at least.
+          </div>
+          <div *ngIf="price.errors?.pattern"> 
+            Please enter just numbers 
+          </div>              
+        </div> 
+        <button class="btn btn-outline-success" type="submit" 
+          [disabled]="isDisabled()">
+          Search</button>
+      </form>
+    </div>
+</nav>
