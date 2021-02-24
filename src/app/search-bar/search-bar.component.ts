@@ -10,21 +10,48 @@ import * as BookReducer from '../shared/store/books.reducer';
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.scss']
 })
-export class SearchBarComponent implements OnInit, AfterViewInit {
+export class SearchBarComponent {
   @Input() bookList: Book;
 
-  searchForm = new FormGroup({});
+  searchForm = new FormGroup({
+    title: new FormControl('', [Validators.minLength(4), Validators.pattern('[a-zA-Z ]*')]),
+    price: new FormControl('', [Validators.minLength(2), Validators.pattern('[0-9]*')]),
+  }, );
 
   constructor(private store: Store<BookReducer.State>) { }
 
-  ngOnInit() {
-    this.searchForm.setValue({title: new FormControl('', [Validators.required, Validators.minLength(4), Validators.pattern('\w')]),
-                              price: new FormControl('')});
+  onSubmit() {
+    console.warn(this.searchForm.value);
   }
 
-  ngAfterViewInit() {
-    console.log(this.bookList);
+  isDisabled() {
+    if ( (this.title.value.length >= 4 || this.price.value.length >= 2)  && this.searchForm.valid) {
+      return false;
+    } else {
+      return true;
+    }
   }
+
+  get title() {
+    return this.searchForm.get('title');
+  }
+
+  get price() {
+    return this.searchForm.get('price');
+  }
+
+  titleError() {
+    return this.title.getError('minLength');
+  }
+
+  // updateTitle() {
+  //   this.title.setValue('Paul');
+  // }
+
+  // ngAfterViewInit() {
+  //   console.log(this.bookList);
+  // }
+
 
   bookTitleMatchValidator(control: AbstractControl): { [key: string]: boolean } {
     if (control.value) {}
