@@ -8,11 +8,11 @@
               aria-label="Search"
               formControlName="title">
           </div>
-          <div class="mb-1" *ngIf="title?.dirty || title?.touched" >
-              <div *ngIf="title.errors?.minlength"> 
+          <div class="mb-1" *ngIf="title.invalid && (title.dirty || title.touched)" >
+              <div *ngIf="title.errors.minlength"> 
                 4 characters requires at least.
               </div>
-              <div *ngIf="title.errors?.pattern"> 
+              <div *ngIf="title.errors.pattern"> 
                 No numbers are valid 
               </div>              
           </div>
@@ -23,16 +23,16 @@
             aria-label="Search"
             formControlName="price">          
         </div> 
-        <div class="mb-1" *ngIf="price?.dirty || price?.touched" >
-          <div *ngIf="price.errors?.minlength"> 
+        <div class="mb-1" *ngIf="price.invalid && (price.dirty || price.touched)" >
+          <div *ngIf="price.errors.minlength">
             2 characters requires at least.
           </div>
-          <div *ngIf="price.errors?.pattern"> 
-            Please enter just numbers 
-          </div>              
-        </div> 
-        <button class="btn btn-outline-success" type="submit" 
-          [disabled]="isDisabled()">
+          <div *ngIf="price.errors.pattern">
+            Please enter just numbers
+          </div>
+        </div>
+        <button class="btn btn-outline-success" type="submit"
+          [disabled]="searchForm.invalid">
           Search</button>
       </form>
     </div>
