@@ -17,7 +17,7 @@ export class SearchBarComponent implements OnInit {
 
   ngOnInit() {
     this.searchForm = new FormGroup({
-      title: new FormControl('', [Validators.minLength(4), Validators.pattern('[a-zA-Z ]*')]),
+      title: new FormControl('', [Validators.minLength(4), Validators.pattern('[a-zA-Z ]*'), Validators.required]),
       price: new FormControl('', [Validators.minLength(2), Validators.pattern('[0-9]*')]),
     }, );
   }
@@ -35,5 +35,5 @@ export class SearchBarComponent implements OnInit {
   get price() {
     return this.searchForm.get('price');
   }
-
 }
+

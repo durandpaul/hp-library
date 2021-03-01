@@ -25,7 +25,6 @@ const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'booklist', component: BookListComponent},
   {path: 'book/:id', component: BookDetailComponent},
-  // {path: 'mybasket', component: basketComponent},
 ];
 
 @NgModule({
@@ -37,7 +36,7 @@ const routes: Routes = [
     HeaderComponent,
     NavBarComponent,
     BookDetailComponent,
-    SearchBarComponent
+    SearchBarComponent,
   ],
   imports: [
     BrowserModule,
